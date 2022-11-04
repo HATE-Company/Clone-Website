@@ -1,16 +1,29 @@
 import { Routes, Route, Outlet } from "react-router-dom";
+import { Layout } from 'antd';
 
 import './App.css';
-import Header from "./components/Header";
+import { TopHeader, BottomHeader } from "./components/Header";
 
 import Home from './pages/Home';
 
-const Layout = () => {
+const { Header, Content, Sider, Footer } = Layout;
+
+const AppLayout = () => {
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    <Layout>
+      <Header className="top-header">
+        <TopHeader />
+      </Header>
+      <Header className="bottom-header">
+        <BottomHeader />
+      </Header>
+      <Layout>
+        <Sider>left sidebar</Sider>
+        <Content><Outlet />t</Content>
+        <Sider>right sidebar</Sider>
+      </Layout>
+      <Footer>footer</Footer>
+    </Layout>
   )
 }
 
@@ -18,7 +31,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           {/* <Route path="about" element={<About />} /> */}
           {/* <Route path="dashboard" element={<Dashboard />} /> */}

@@ -1,3 +1,7 @@
-import Header from './Header';
+import TopHeader from './TopHeader';
+import BottomHeader from './BottomHeader';
 
-export default Header;
+export {
+  TopHeader,
+  BottomHeader
+}
